@@ -485,7 +485,7 @@ switch ( expression ) {
 
     - Use `///` *only* for 1-line documentation comments
 
-    Install [VVDocumenter](https://github.com/onevcat/VVDocumenter-Xcode) via [Alcatraz](https://github.com/onevcat/VVDocumenter-Xcode) to automatically fill in AppleDoc-style comments when you type `///`
+    - Install [VVDocumenter](https://github.com/onevcat/VVDocumenter-Xcode) via [Alcatraz](https://github.com/onevcat/VVDocumenter-Xcode) to automatically fill in AppleDoc-style comments when you type `///`
 
     - For more info on documentation in Xcode, see [this stackoverflow answer](http://stackoverflow.com/a/6605536)
 
