@@ -16,38 +16,41 @@ This guide outlines the coding conventions and best practices for the Objective-
 
     Preferred:
 
-```
+```objc
 self.foo = 4;
 int bar = self.foo;
 ```
 
     Not:
-
-        [self setFoo:4];
-        int bar = [self foo];
-        _bar = 4;
+```objc
+[self setFoo:4];
+int bar = [self foo];
+_bar = 4;
+```
 
 - For clarity, you may use bracket notation for overridden setters/getters:
 
-        - (void)setFoo:(int)foo
-        {
-            // some extra code goes here
+```objc
+- (void)setFoo:(int)foo
+{
+    // some extra code goes here
 
-            _foo = foo;
-        }
+    _foo = foo;
+}
 
-        - (int)foo
-        {
-            // some extra code goes here
+- (int)foo
+{
+    // some extra code goes here
 
-            return _foo;
-        }
+    return _foo;
+}
 
-        - (void)aMethod
-        {
-            [self setFoo:4];
-            int test = [self foo];
-        }
+- (void)aMethod
+{
+    [self setFoo:4];
+    int test = [self foo];
+}
+```
 
 - **Never** use dot notation on a non-[idempotent](http://en.wikipedia.org/wiki/Idempotent) property or method
 
@@ -59,22 +62,25 @@ int bar = self.foo;
 
     Bad:
 
-        - (void)setFoo:(id)foo
-        {
-            _foo = foo;
-            _lastTimeFooWasSet = [NSDate date];
-           [self.tableView reloadData];
-        }
+```objc
+- (void)setFoo:(id)foo
+{
+    _foo = foo;
+    _lastTimeFooWasSet = [NSDate date];
+   [self.tableView reloadData];
+}
 
     Better:
 
-        - (void)updateFoo:(id)foo refresh:(BOOL)refresh
-        {
-            self.foo = foo;
-            if ( refresh ) {
-                _lastTimeFooWasSet = [NSDate date];
-                [self.tableView reloadData];
-            }
-        }
+```objc
+- (void)updateFoo:(id)foo refresh:(BOOL)refresh
+{
+    self.foo = foo;
+    if ( refresh ) {
+        _lastTimeFooWasSet = [NSDate date];
+        [self.tableView reloadData];
+    }
+}
+```
 
     - this is not to say that you shouln't override setters; you just need to be careful that the side effects are obvious, and with low potential danger
