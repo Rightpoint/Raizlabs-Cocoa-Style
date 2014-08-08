@@ -18,10 +18,12 @@ This guide outlines the coding conventions and best practices for the Objective-
 - [Variables](#variables-1)
 - [Properties](#properties-1)
 - [Conditionals](#conditionals)
+- [Mathematical operators](#mathematical-operators)
 
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
 
 ## Dot Syntax
+
 Use dot notation for all property access and manipulation. **Never** access `_ivars` directly when a property has been declared, except where required:
 
 **Preferred:**
@@ -146,6 +148,7 @@ Never give properties generic names. Instead, prefix the variable name with a de
 ```
 
 ### Instance Variables
+
 Instance variables begin with an underscore and rename the variable to `_propertyName`.
 
 ```objc
@@ -275,4 +278,39 @@ if (expression)
 }
 else
     // else code // NEVER forgo braces
+```
+
+## Mathematical operators
+
+Unary operators stick to the number they modify:
+
+```objc
+int x = -10;
+NSNumber *y = @(x * -3);
+```
+
+Use spaces between all binary and ternary mathematical operators. Fully parenthesize mathematical expressions and any logical expression with 1+ operator:
+
+```objc
+int x = ((1 + 1) / 1);
+```
+
+Ternary conditional tests must be enclosed in parens:
+
+```objc
+CGFloat result = (x > 2) ? someValue : otherValue;
+```
+
+Non-conditionals do not need parens:
+
+```objc
+CGFloat result = self.isLoading ? someValue : otherValue;
+```
+
+No nesting of ternary expressions.
+
+- Don't even think about it.
+
+```objc
+BOOL dontDoThis = self.otherBOOL ? ((self.dont) ? self.do : self.this) : self.please;
 ```
