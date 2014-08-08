@@ -130,7 +130,7 @@ This is not to say that you shouln't override setters; you just need to be caref
 ### Newlines
 
 - Never more than one consecutive newline of whitespace
-- Use one newline of whitespace to separate out conceptually separate bits of methods.
+- Use one newline of whitespace to group conceptually distinct parts of methods.
 
 ```objc
 - (void)viewDidLoad
@@ -489,7 +489,7 @@ switch ( expression ) {
 
     - For more info on documentation in Xcode, see [this stackoverflow answer](http://stackoverflow.com/a/6605536)
 
-## Method signatures
+## Method Signatures
 
 - One space between scope symbol (`-`, `+`) and return type
 - One space between types and asterisks
@@ -524,7 +524,7 @@ Colon-align long method signatures ([3 lines or more](#ruleOfThree)) (unless the
                delegate:(id<RZCollectionListTableViewDataSourceDelegate>)delegate
 ```
 
-- when the first parameter is not as long as the latter ones, left-align all lines. (This is what Xcode’s default auto-format behavior, so it runs the least risk of being changed by mistake later.)
+When the first parameter is not as long as the latter ones, left-align all lines. (This is what Xcode’s default auto-format behavior, so it runs the least risk of being changed by mistake later.)
 
 ```
 - (void)align:(BOOL)this
@@ -582,10 +582,7 @@ Using only one return at the end of a method end is **extremely preferred**. Ins
 }
 ```
 
-Early returns are permitted in the following cases:
-
-- Only at the beginning of a method, when you need to bail quickly
-- Usually following a test
+Early returns are permitted only at the beginning of a method, when you need to bail quickly:
 
 ```objc
 - (id)doSomething
