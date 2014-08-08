@@ -85,3 +85,26 @@ Avoid non-idempotent setters
 ```
 
 This is not to say that you shouln't override setters; you just need to be careful that the side effects are obvious, and with low potential danger.
+
+## Whitespace
+
+### Newlines
+
+- Never more than one consecutive newline of whitespace
+- Use one newline of whitespace to separate out conceptually separate bits of methods.
+
+```objc
+- (void)viewDidLoad
+{
+    // set up foo object
+    UIFoo *foo = [[UIFoo alloc] init];
+    foo.property = value;
+
+    // set up bar object
+    UIBar *bar = [[UIBar alloc] initWithThing:foo];
+}
+```
+
+### Indentation
+
+- Always use 4 spaces, never tabs. (In Xcode, go to **Preferences** → **Text Editing** → **Indentation** to set this.)
