@@ -496,7 +496,7 @@ switch ( expression ) {
 - Descriptive names for parameter names
 - A pre-colon identifier must be present for each parameter
 - A type must be present for each identifier
-- Don't use `and` and/or `or` for parameter names.
+- Don't use `and` or `or` for parameter names.
 - Block parameters should always be last
 
 **Preferred:**
