@@ -60,7 +60,7 @@ NSUInteger foo = myArray.count;
 
 Avoid non-idempotent setters
 
-***Bad:***
+**Bad:**
 
 ```objc
 - (void)setFoo:(id)foo
