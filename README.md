@@ -418,7 +418,7 @@ switch ( expression ) {
 
 **Not:**
 
-```
+```objc
 switch ( expression ) {
     case 1: {
         // case 1 code
@@ -530,7 +530,7 @@ Colon-align long method signatures ([3 lines or more](#rule-of-three)) (unless t
 
 When the first parameter is not as long as the latter ones, left-align all lines. (This is what Xcode’s default auto-format behavior, so it runs the least risk of being changed by mistake later.)
 
-```
+```objc
 - (void)align:(BOOL)this
 veryVeryVeryVeryLong:(BOOL)method
 signatureThatIsStillNotAsLongAsManyTotallyLegitimateCocoa:(BOOL)methods
