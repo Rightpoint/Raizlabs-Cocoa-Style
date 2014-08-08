@@ -1087,20 +1087,20 @@ Objective-C files should generally be organized in the following order. See the 
 - Framework `@import`s
 - Application header `#import`s (`"..."`)
 
-    - These should be used judiciously. Consider forward class declarations and only import in .m or _Private.h if you can. This can improve build times by reducing the redundancy of header imports.
+    - These should be used judiciously. Consider forward class declarations and only import in `.m` or `_Private.h` if you can. This can improve build times by reducing the redundancy of header imports.
 - forward `@class` declarations
 - forward `@protocol` declarations
 - `typedef`ed enumerations and block signatures
 - `OBJC_EXTERN`ed constant declarations
-- `@interface` - protocol conformations should be used here judiciously--consider using in .m or _Private.h; see also [Rule of Three](#rule-of-three))
+- `@interface` - protocol conformations should be used here judiciously — consider using in `.m` or `_Private.h`; see also [Rule of Three](#rule-of-three))
 
 - **Nothing should be public unless it explicitly needs to be used by other classes**
 
 - `@property` declarations
     - cluster similar properties into groups separated by a newline
-        - UIView subclasses
-        - Other NSObject subclasses
-        - NSLayoutConstraints
+        - `UIView` subclasses
+        - Other `NSObject` subclasses
+        - `NSLayoutConstraint`s
         - delegate references
 - class method declarations
 - public interface method declarations
@@ -1152,7 +1152,7 @@ An example structure:
         - constant files
         - third party software
 - `typedef`ed `enum`s, block signatures
-- macro `#define`s
+- macros
 - constant definitions
 - `@interface` extension
     - Protocol conformations not needed by subclasses. See also: [Rule of Three](#rule-of-three)
