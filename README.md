@@ -200,3 +200,31 @@ Always use `@property`-declared variables instead of instance variables (except 
 Instance variables are required in the following case:
 
 > Subclasses don't have visibility into auto-synthesized properties defined on ancestor classes. Redefining the property requires duplicating the property semantics, which might change. Declaring the instance variable is actually correct in this case. If you want to hide it, mark it `@private` or use a private header.
+
+## Properties
+
+- Spaces between `@property`, specifiers, and property type
+- Asterisk sticks to property name
+- Specifier order:
+
+ 1. Retain strength: `strong`, `weak`, `assign`, `copy`
+ 2. Atomicity `nonatomic`, `atomic`
+ 3. Readability `readwrite`, `readonly`
+ 4. Custom getter
+ 5. Custom setter
+
+**Preferred:**
+
+```objc
+@property (strong, nonatomic) NSObject *someObject;
+```
+
+**Not:**
+
+```objc
+@property (nonatomic, strong) NSObject *someObject;
+@property (strong, nonatomic) NSObject* someObject;
+@property (strong, nonatomic) NSObject * someObject;
+@property(strong, nonatomic) NSObject *someObject;
+@property(strong, nonatomic)NSObject *someObject;
+```
