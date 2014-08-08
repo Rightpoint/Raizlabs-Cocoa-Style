@@ -22,6 +22,7 @@ int bar = self.foo;
 ```
 
     Not:
+
 ```objc
 [self setFoo:4];
 int bar = [self foo];
