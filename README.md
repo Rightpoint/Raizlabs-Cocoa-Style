@@ -19,7 +19,7 @@ This guide outlines the coding conventions and best practices for the Objective-
 - [Properties](#properties-1)
 - [Conditionals](#conditionals)
 - [Mathematical operators](#mathematical-operators)
-- [CGFloat](#cgfloat)
+- [`CGFloat`](#cgfloat)
 - [Switch statements](#switch-statements)
 - [Comments](#comments)
 - [Method Signatures](#method-signatures)
@@ -345,7 +345,7 @@ No nesting of ternary expressions.
 BOOL dontDoThis = self.otherBOOL ? ((self.dont) ? self.do : self.this) : self.please;
 ```
 
-## CGFloat
+## `CGFloat`
 
 - `CGFloat` is defined as `double` in 64-bit architecture and `float` in 32-bit
 - Always trail with an `f` when sending a float literal to a `CGFloat` parameter
