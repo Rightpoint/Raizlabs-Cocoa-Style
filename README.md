@@ -108,3 +108,53 @@ This is not to say that you shouln't override setters; you just need to be caref
 ### Indentation
 
 - Always use 4 spaces, never tabs. (In Xcode, go to **Preferences** → **Text Editing** → **Indentation** to set this.)
+
+## Naming
+
+### Variables
+
+Variables always use camel case
+
+```objc
+likeThis;
+```
+
+### Properties
+
+Never give properties generic names. Instead, prefix the variable name with a descriptor such as, but not limited to, the class name.
+
+**Preferred:**
+
+```objc
+@property (strong, nonatomic) UICollectionView *myClassCollectionView;
+```
+
+**Not:**
+```objc
+@property (strong, nonatomic) UICollectionView *collectionView;
+```
+
+### Instance Variables
+Instance variables begin with an underscore and rename the variable to `_propertyName`.
+
+```objc
+@synthesize ivarName = _ivarName;
+```
+
+However, the use of explicitly declared or synthesized instance variables is discouraged except where required.
+
+### Constants
+
+Constants are camel-case, and should use the following format:
+
+- lowercase `k` prefix
+- followed by the project's class prefix in all caps
+- followed by class name
+- followed by descriptor
+
+```objc
+// [k][class prefix][class name][constant name]
+static const NSInteger kRZMyClassSomeErrorCode = -1;
+```
+
+See also: [Cocoa naming conventions for variables and types](https://developer.apple.com/library/mac/documentation/cocoa/conceptual/codingguidelines/articles/namingivarsandtypes.html).
