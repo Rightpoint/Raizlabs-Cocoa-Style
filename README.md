@@ -7,6 +7,17 @@ This guide outlines the coding conventions and best practices for the Objective-
 **Table of Contents**  *generated with [DocToc](http://doctoc.herokuapp.com/)*
 
 - [Dot Syntax](#dot-syntax)
+- [Whitespace](#whitespace)
+  - [Newlines](#newlines)
+  - [Indentation](#indentation)
+- [Naming](#naming)
+  - [Variables](#variables)
+  - [Properties](#properties)
+  - [Instance Variables](#instance-variables)
+  - [Constants](#constants)
+- [Variables](#variables-1)
+- [Properties](#properties-1)
+- [Conditionals](#conditionals)
 
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
 
@@ -227,4 +238,41 @@ Instance variables are required in the following case:
 @property (strong, nonatomic) NSObject * someObject;
 @property(strong, nonatomic) NSObject *someObject;
 @property(strong, nonatomic)NSObject *someObject;
+```
+
+## Conditionals
+
+- **NEVER** forgo the braces for one-line if statements ([#gotofail](https://www.imperialviolet.org/2014/02/22/applebug.html) anyone?)
+- One space between the control keyword and opening parentheses
+- Opening brace same line as predicate, separated by one space
+- Continuing keywords (`else if`/`else`) on new line below closing brace
+- All keywords and closing braces are flush left and code within braces are indented 4 spaces
+- One-space padding within parentheses
+
+**Preferred:**
+
+```objc
+if ( expression ) {
+    // if code
+}
+else if ( other expression ) {
+    // else if code
+}
+else {
+    // else code
+}
+```
+
+**Not:**
+
+```objc
+if (expression)
+{ // shouldn't be on next line
+    // if code
+} else if (expression) // else should start on new line
+{
+    // else if code
+}
+else
+    // else code // NEVER forgo braces
 ```
