@@ -201,7 +201,7 @@ See also: [Cocoa naming conventions for variables and types](https://developer.a
 
 ## Variables
 
-Asterisks indicating pointers belong with the variable, except in the case of [constants](#Constants):
+Asterisks indicating pointers belong with the variable, except in the case of [constants](#constants):
 
 **Preferred:**
 
@@ -473,7 +473,7 @@ switch ( expression ) {
 
 - `/* */`
 
-    - Very long comments (3 lines or more; see [Rule of Threes](#ruleOfThree))
+    - Very long comments (3 lines or more; see [Rule of Threes](#rule-of-three))
 
 - `/** */` Documentation Comments
 
@@ -516,7 +516,7 @@ switch ( expression ) {
 - (instancetype)initWith:(int)width and:(int)height; // Never do this.
 ```
 
-Colon-align long method signatures ([3 lines or more](#ruleOfThree)) (unless there is a block parameter!):
+Colon-align long method signatures ([3 lines or more](#rule-of-three)) (unless there is a block parameter!):
 
 ```objc
 - (id)initWithTableView:(UITableView *)tableView
