@@ -158,3 +158,45 @@ static const NSInteger kRZMyClassSomeErrorCode = -1;
 ```
 
 See also: [Cocoa naming conventions for variables and types](https://developer.apple.com/library/mac/documentation/cocoa/conceptual/codingguidelines/articles/namingivarsandtypes.html).
+
+## Variables
+
+Asterisks indicating pointers belong with the variable, except in the case of [constants](#Constants):
+
+**Preferred:**
+
+```objc
+NSString *text;
+```
+
+**Not:**
+
+```objc
+NSString* text;
+NSString * text
+```
+
+Always use `@property`-declared variables instead of instance variables (except for where you have to).
+
+**Preferred:**
+
+```objc
+@interface RWTTutorial : NSObject
+
+@property (copy, nonatomic) NSString *tutorialName;
+
+@end
+```
+
+**Not:**
+
+```objc
+@interface RWTTutorial : NSObject
+{
+    NSString *tutorialName;
+}
+```
+
+Instance variables are required in the following case:
+
+> Subclasses don't have visibility into auto-synthesized properties defined on ancestor classes. Redefining the property requires duplicating the property semantics, which might change. Declaring the instance variable is actually correct in this case. If you want to hide it, mark it `@private` or use a private header.
