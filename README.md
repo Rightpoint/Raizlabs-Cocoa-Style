@@ -22,7 +22,7 @@ This guide outlines the coding conventions and best practices for the Objective-
 - [CGFloat](#cgfloat)
 - [Switch statements](#switch-statements)
 - [Comments](#comments)
-- [Method signatures](#method-signatures)
+- [Method Signatures](#method-signatures)
 - [Return statements](#return-statements)
 - [Protocols](#protocols)
 - [Blocks](#blocks)
@@ -45,6 +45,10 @@ This guide outlines the coding conventions and best practices for the Objective-
   - [Protocol Conformation](#protocol-conformation)
   - [Method calls/signatures](#method-callssignatures)
 - [Unnecessary code](#unnecessary-code)
+- [File Organization](#file-organization)
+  - [Header Files (`.h`)](#header-files-h)
+    - [When to use a `_Private.h` file](#when-to-use-a-_privateh-file)
+  - [Implementation Files (`.m`)](#implementation-files-m)
 
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
 
@@ -1073,3 +1077,100 @@ Advances in Clang and Objective-C have made certain conventions obsolete. 99% of
 - forward declaration of private methods
     - for readability's sake, private methods should always be grouped under `#pragma mark - Private Methods`
     - please see the [file organization](#file-organization) page for more on this
+
+## File Organization
+
+Objective-C files should generally be organized in the following order. See the included `RZSampleViewController.h` and `RZSampleViewController.m` to see these rules in practice.
+
+### Header Files (`.h`)
+
+- Framework `@import`s
+- Application header `#import`s (`"..."`)
+
+    - These should be used judiciously. Consider forward class declarations and only import in .m or _Private.h if you can. This can improve build times by reducing the redundancy of header imports.
+- forward `@class` declarations
+- forward `@protocol` declarations
+- `typedef`ed enumerations and block signatures
+- `OBJC_EXTERN`ed constant declarations
+- `@interface` - protocol conformations should be used here judiciously--consider using in .m or _Private.h; see also [Rule of Three](#rule-of-three))
+
+- **Nothing should be public unless it explicitly needs to be used by other classes**
+
+- `@property` declarations
+    - cluster similar properties into groups separated by a newline
+        - UIView subclasses
+        - Other NSObject subclasses
+        - NSLayoutConstraints
+        - delegate references
+- class method declarations
+- public interface method declarations
+- `IBOutlet`/`IBAction` should never appear in `.h` files!
+- `@protocol` definitions
+    - `@required` and `@optional` only necessary if both types of methods are present
+
+#### When to use a `_Private.h` file
+
+When you have a base class of which you have multiple subclasses. For example:
+
+- Separate iPad and iPhone versions of a class
+- If the subclasses need to inherit private properties and methods
+- You don't want to expose items in the public interface of the base class
+
+What to do:
+
+1. Create a new class extension file
+2. Name it YourClass_Private.h
+3. Put all your shared interface elements in that private interface
+4. Import that interface file in your subclasses' implementation files
+
+An example structure:
+
+- Base Class
+    - `RZMainViewController.m`
+    - `RZMainViewController.h`
+- Private Interface
+    - `RZMainViewController_Private.h`
+- iPhone subclass - .m `#import`s `RZMainViewController_Private.h`
+    - `RZMainViewController~iphone.m`
+    - `RZMainViewController~iphone.h`
+    - `RZMainViewController~iphone.xib`
+- iPad subclass - .m `#import`s `RZMainViewController_Private.h`
+    - `RZMainViewController~ipad.m`
+    - `RZMainViewController~ipad.h`
+    - `RZMainViewController~ipad.xib`
+
+### Implementation Files (`.m`)
+
+- framework `@import`s
+
+- application header imports
+    - cluster different kinds of imports together, with comments if many types are present
+        - view controllers
+        - custom views/cells
+        - data model/managers
+        - categories (always in their own files, never in-line)
+        - constant files
+        - third party software
+- `typedef`ed `enum`s, block signatures
+- macro `#define`s
+- constant definitions
+- `@interface` extension
+    - Protocol conformations not needed by subclasses. See also: [Rule of Three](#rule-of-three)
+        - See [Header file](#header-files-h) section
+    - `IBAction` method declarations
+        - These are optional, and should be included only for clarity
+    - Not necessary to declare delegate/private methods or property overrides
+- `@implementation`
+    - organize sections with `#pragma mark -`
+    - `@synthesize` statements
+        - only use when necessary, such as with read-only properties
+    - class methods
+    - `init` & `dealloc`
+    - view lifecycle
+    - notification handlers
+    - delegate callbacks
+    - `IBAction` handlers
+    - overridden property getters/setters
+        - getter and setter for same property should appear consecutively
+    - public interface methods
+    - private interface methods
