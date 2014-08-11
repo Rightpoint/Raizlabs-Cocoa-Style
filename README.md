@@ -805,7 +805,7 @@ Magic numbers are allowed for numbers that can't change (like dividing by 2 to g
 If you need a constant struct, use the [designated intializer syntax](https://gcc.gnu.org/onlinedocs/gcc/Designated-Inits.html):
 
 ```objc
-static const CGSize kRZTestViewControllerShadowOffset = { .width = 0, .height = 3 };
+static const CGSize kRZTestViewControllerShadowOffset = { .width = 0.0f, .height = 3.0f };
 ```
 
 ## Enumerations
