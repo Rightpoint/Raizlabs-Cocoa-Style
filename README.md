@@ -15,6 +15,7 @@ This guide outlines the coding conventions and best practices for the Objective-
   - [Properties](#properties)
   - [Instance Variables](#instance-variables)
   - [Constants](#constants)
+  - [Files](#files)
 - [Variables](#variables-1)
 - [Properties](#properties-1)
 - [Conditionals](#conditionals)
@@ -47,8 +48,9 @@ This guide outlines the coding conventions and best practices for the Objective-
 - [Unnecessary code](#unnecessary-code)
 - [File Organization](#file-organization)
   - [Header Files (`.h`)](#header-files-h)
-    - [When to use a `_Private.h` file](#when-to-use-a-_privateh-file)
   - [Implementation Files (`.m`)](#implementation-files-m)
+- [Private Header Files](#private-header-files)
+- [Categories](#categories)
 
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
 
@@ -202,6 +204,14 @@ static const NSInteger kRZMyClassSomeErrorCode = -1;
 ```
 
 See also: [Cocoa naming conventions for variables and types](https://developer.apple.com/library/mac/documentation/cocoa/conceptual/codingguidelines/articles/namingivarsandtypes.html).
+
+### Files
+
+File names should follow this format: [class prefix][class name][(optional) modifying suffix]
+
+- class prefix: Should be three letters to avoid conflicting with any default class prefixes. (eg. XYZClassName)
+- class name: A descriptive noun. When pertinent to understanding class function it is conventional to add the superclass to the end of the class name. (eg. XYZMyCustomViewController)
+- modifying suffix: Usually prefaced by a special character. See [Private Header Files](#private-header-files) and [Categories](#categories)
 
 ## Variables
 
@@ -1084,31 +1094,69 @@ Objective-C files should generally be organized in the following order. See the 
 
 ### Header Files (`.h`)
 
-- Framework `@import`s
-- Application header `#import`s (`"..."`)
+1. Framework `@import`s
+1. Application header `#import`s (`"..."`)
 
     - These should be used judiciously. Consider forward class declarations and only import in `.m` or `_Private.h` if you can. This can improve build times by reducing the redundancy of header imports.
-- forward `@class` declarations
-- forward `@protocol` declarations
-- `typedef`ed enumerations and block signatures
-- `OBJC_EXTERN`ed constant declarations
-- `@interface` - protocol conformations should be used here judiciously — consider using in `.m` or `_Private.h`; see also [Rule of Three](#rule-of-three))
+1. Forward `@class` declarations
+1. Forward `@protocol` declarations
+1. `typedef`ed enumerations and block signatures
+1. `OBJC_EXTERN`ed constant declarations
+1. `@interface` - protocol conformations should be used here judiciously — consider using in `.m` or `_Private.h`; see also [Rule of Three](#rule-of-three))
 
 - **Nothing should be public unless it explicitly needs to be used by other classes**
 
-- `@property` declarations
+1. `@property` declarations
     - cluster similar properties into groups separated by a newline
         - `UIView` subclasses
         - Other `NSObject` subclasses
         - `NSLayoutConstraint`s
         - delegate references
-- class method declarations
-- public interface method declarations
-- `IBOutlet`/`IBAction` should never appear in `.h` files!
-- `@protocol` definitions
+1. Class method declarations
+1. Public interface method declarations
+1. `IBOutlet`/`IBAction` should never appear in `.h` files!
+1. `@protocol` definitions
     - `@required` and `@optional` only necessary if both types of methods are present
 
-#### When to use a `_Private.h` file
+### Implementation Files (`.m`)
+
+1. Framework `@import`s
+1. Application header imports
+    - Import associated class header file first, separated by a line break
+    - Cluster different kinds of imports together, with comments if many types are present
+        - view controllers
+        - custom views/cells
+        - data model/managers
+        - categories (always in their own files, never in-line)
+        - constant files
+        - third party software
+1. `typedef`ed `enum`s, block signatures
+1. Macros
+1. Constant definitions
+1. `@interface` extension
+    - Protocol conformations not needed by subclasses. See also: [Rule of Three](#rule-of-three)
+        - See [Header file](#header-files-h) section
+    - `IBAction` method declarations
+        - These are optional, and should be included only for clarity
+    - Not necessary to declare delegate/private methods or property overrides
+1. `@implementation`
+    - Organize sections with `#pragma mark -`
+    - `@synthesize` statements
+        - only use when necessary, such as with read-only properties
+    - Class methods
+    - `init` & `dealloc`
+    - View lifecycle
+    - Notification handlers
+    - Delegate callbacks
+    - `IBAction` handlers
+    - Overridden property getters/setters
+        - Getter and setter for same property should appear consecutively
+    - Public interface methods
+    - Private interface methods
+
+## Private Header Files
+
+When to use a private header (`_Private.h`) file:
 
 When you have a base class of which you have multiple subclasses. For example:
 
@@ -1139,38 +1187,12 @@ An example structure:
     - `RZMainViewController~ipad.h`
     - `RZMainViewController~ipad.xib`
 
-### Implementation Files (`.m`)
+## Categories
 
-- framework `@import`s
+Category use guidelines:
 
-- application header imports
-    - cluster different kinds of imports together, with comments if many types are present
-        - view controllers
-        - custom views/cells
-        - data model/managers
-        - categories (always in their own files, never in-line)
-        - constant files
-        - third party software
-- `typedef`ed `enum`s, block signatures
-- macros
-- constant definitions
-- `@interface` extension
-    - Protocol conformations not needed by subclasses. See also: [Rule of Three](#rule-of-three)
-        - See [Header file](#header-files-h) section
-    - `IBAction` method declarations
-        - These are optional, and should be included only for clarity
-    - Not necessary to declare delegate/private methods or property overrides
-- `@implementation`
-    - organize sections with `#pragma mark -`
-    - `@synthesize` statements
-        - only use when necessary, such as with read-only properties
-    - class methods
-    - `init` & `dealloc`
-    - view lifecycle
-    - notification handlers
-    - delegate callbacks
-    - `IBAction` handlers
-    - overridden property getters/setters
-        - getter and setter for same property should appear consecutively
-    - public interface methods
-    - private interface methods
+- Use categories when you want to alter the behavior of all instances of a class. Use subclassing instead when you want to modify the behavior of only certain instances while retaining the original behavior for others.
+- Categories are generally not well suited for adding properties to a class.
+- Don't overuse categories. Categorization can sometimes be dangerous if you do not have access to the original class implementation, so avoid significantly changing method behavior when modifying private and third-party frameworks.
+
+File name syntax: `[base class name]+CategoryName.[h/m]` (eg. `RZExampleClass+SomeCategory.h`)
