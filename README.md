@@ -49,6 +49,7 @@ This guide outlines the coding conventions and best practices for the Objective-
   - [Header Files (`.h`)](#header-files-h)
     - [When to use a `_Private.h` file](#when-to-use-a-_privateh-file)
   - [Implementation Files (`.m`)](#implementation-files-m)
+- [Macros](#macros)
 
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
 
@@ -1174,3 +1175,14 @@ An example structure:
         - getter and setter for same property should appear consecutively
     - public interface methods
     - private interface methods
+
+### Macros
+
+- Inside Objective-C source, use "`typeof()`".  When using the Clang compiler, or using gcc AND `GCC_ENABLE_ASM_KEYWORD=YES`, it's equivalent to the underscored versions ("`__typeof()`" and "`__typeof()__`").  
+
+- When defining a macro that includes a parameter, parenthesize any use of the parameter.
+
+    - Right: `#define FOO\_TIMES_TWO( x )  ( (x) * 2 )         
+    - Wrong: `#define FOO\_TIMES_TWO( x )  (  x  * 2 )         
+    
+    
