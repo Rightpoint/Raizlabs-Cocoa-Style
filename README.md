@@ -1178,11 +1178,11 @@ An example structure:
 
 ### Macros
 
-- Inside Objective-C source, use "`typeof()`".  When using the Clang compiler, or using gcc AND `GCC_ENABLE_ASM_KEYWORD=YES`, it's equivalent to the underscored versions ("`__typeof()`" and "`__typeof()__`").  
+- Inside Objective-C source, use `typeof()`.  When using the Clang compiler, or using gcc AND `GCC_ENABLE_ASM_KEYWORD=YES`, it's equivalent to the underscored versions (`__typeof()` and `__typeof()__`).
 
 - When defining a macro that includes a parameter, parenthesize any use of the parameter.
 
-    - Right: `#define FOO\_TIMES_TWO( x )  ( (x) * 2 )         
-    - Wrong: `#define FOO\_TIMES_TWO( x )  (  x  * 2 )         
-    
-    
+    - Right
+        - `#define FOO_TIMES_TWO( x )  ( (x) * 2 )`
+    - Wrong:
+        - `#define FOO_TIMES_TWO( x )  (  x  * 2 )`
