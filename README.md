@@ -483,7 +483,7 @@ switch ( expression ) {
 
     - Documentation comments give semantic and contextual meaning to our APIs
 
-    - Should only be used to create a documentation file for our open source frameworks
+    - These are required for open-source frameworks, but can also be useful to document internal code, especially core components of an app, like common API and data classes
 
     - Can be parsed by [AppleDoc](http://gentlebytes.com/appledoc/) to create documentation file from code
 
