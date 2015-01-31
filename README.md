@@ -1180,9 +1180,10 @@ An example structure:
 
 - Inside Objective-C source, use `typeof()`.  When using the Clang compiler, or using gcc AND `GCC_ENABLE_ASM_KEYWORD=YES`, it's equivalent to the underscored versions (`__typeof()` and `__typeof()__`).
 
-- When defining a macro that includes a parameter, parenthesize any use of the parameter.
+- When defining a macro that includes a parameter, parenthesize any use of the parameter.  Otherwise, FOO_TIMES_TWO( 2+3 ) == 8, not 10.
 
     - Right
         - `#define FOO_TIMES_TWO( x )  ( (x) * 2 )`
     - Wrong:
         - `#define FOO_TIMES_TWO( x )  ( x * 2 )`
+    
