@@ -1185,4 +1185,4 @@ An example structure:
     - Right
         - `#define FOO_TIMES_TWO( x )  ( (x) * 2 )`
     - Wrong:
-        - `#define FOO_TIMES_TWO( x )  (  x  * 2 )`
+        - `#define FOO_TIMES_TWO( x )  ( x * 2 )`
