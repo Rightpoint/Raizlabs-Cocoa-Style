@@ -162,10 +162,11 @@ Variables always use camel case:
 likeThis;
 ```
 
-Variables of type `Class` start with a capital letter:
+Variables of type `Class` start with a capital letter. Note that a variable of type `Class` should use `Nil`, not `nil`, to express emptiness:
 
 ```objc
-Class SomeClassVariable = [MyClass class];
+Class SomeClassVariable = Nil;
+SomeClassVariable = [MyClass class];
 ```
 
 ### Properties
