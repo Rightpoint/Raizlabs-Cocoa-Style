@@ -156,10 +156,16 @@ This is not to say that you shouln't override setters; you just need to be caref
 
 ### Variables
 
-Variables always use camel case
+Variables always use camel case:
 
 ```objc
 likeThis;
+```
+
+Variables of type `Class` start with a capital letter:
+
+```objc
+Class SomeClassVariable = [MyClass class];
 ```
 
 ### Properties
