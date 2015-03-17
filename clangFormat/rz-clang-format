@@ -1,0 +1,119 @@
+# This file is not yet complete and does not properly format code to the Raizlabs style.
+
+# Not explicit
+ColumnLimit: 0
+SpaceBeforeParens: Always
+AllowShortBlocksOnASingleLine: false
+AllowShortFunctionsOnASingleLine: false
+AllowShortFunctionsOnASingleLine: None
+AllowShortLoopsOnASingleLine: false
+KeepEmptyLinesAtTheStartOfBlocks: false
+
+# https://github.com/Raizlabs/Raizlabs-Cocoa-Style#newlines
+MaxEmptyLinesToKeep: 1
+
+# https://github.com/Raizlabs/Raizlabs-Cocoa-Style#indentation
+IndentWidth: 4
+TabWidth: 4
+UseTab: Never
+
+# https://github.com/Raizlabs/Raizlabs-Cocoa-Style#variables-1
+PointerAlignment: Right
+DerivePointerAlignment: false
+
+# https://github.com/Raizlabs/Raizlabs-Cocoa-Style#properties-1
+# does not implement preferred ordering of property specifiers
+ObjCSpaceAfterProperty: true
+
+# https://github.com/Raizlabs/Raizlabs-Cocoa-Style#conditionals
+# does not implement requiring braces for one line statements
+BreakBeforeBraces: Stroustrup
+AllowShortIfStatementsOnASingleLine: false
+
+# https://github.com/Raizlabs/Raizlabs-Cocoa-Style#mathematical-operators
+# does not implement requiring parentheses for mathematical expressions
+# and parentheses around ternary conditionals
+BreakBeforeTernaryOperators: false
+
+# https://github.com/Raizlabs/Raizlabs-Cocoa-Style#switch-statements
+# does not add missing braces, does not call out empty default: case on
+# switches
+IndentCaseLabels: true
+AllowShortCaseLabelsOnASingleLine: false
+
+# https://github.com/Raizlabs/Raizlabs-Cocoa-Style#comments
+# Does not add a space after // comments
+AlignTrailingComments: true
+SpacesBeforeTrailingComments: 2
+
+# https://github.com/Raizlabs/Raizlabs-Cocoa-Style#method-signatures
+# Correct method signature construction seems to be inferred from
+# other settings, but it does not check for missing identifiers, or bad
+# parameter names
+# also does not perfectly align with xCodes auto indent fallback
+BinPackParameters: true
+BinPackArguments: true
+AllowShortFunctionsOnASingleLine: false
+IndentWrappedFunctionNames: false
+
+# https://github.com/Raizlabs/Raizlabs-Cocoa-Style#protocols
+ObjCSpaceBeforeProtocolList: true
+
+# https://github.com/Raizlabs/Raizlabs-Cocoa-Style#blocks
+# Doesn't do anything useful with the typdef naming conventions,
+# also does not force short blocks to be separated on a line, and
+# as a major deficiency, always indents the block inline with the arguments
+# To avoid breaking formatting, leaving ObjCBlockIndentWidth undefined
+# Makes clang_format
+# ObjCBlockIndentWidth: 0
+
+# https://github.com/Raizlabs/Raizlabs-Cocoa-Style#rule-of-three
+# No settings to support breaking protocols onto one line per
+
+# https://github.com/Raizlabs/Raizlabs-Cocoa-Style#method-callssignatures
+# Breaks on long signatures, rather than a specific count
+
+# Unused clang format properties
+# AccessModifierOffset (int)
+# AlignAfterOpenBracket (bool)
+# AlignEscapedNewlinesLeft (bool)
+# AlignOperands (bool)
+# AllowAllParametersOfDeclarationOnNextLine (bool)
+# AlwaysBreakAfterDefinitionReturnType (bool)
+# AlwaysBreakBeforeMultilineStrings (bool)
+# AlwaysBreakTemplateDeclarations (bool)
+# BreakBeforeBinaryOperators (BinaryOperatorStyle)
+# BreakConstructorInitializersBeforeComma (bool)
+# CommentPragmas (std::string)
+# ConstructorInitializerAllOnOneLineOrOnePerLine (bool)
+# ConstructorInitializerIndentWidth (unsigned)
+# Cpp11BracedListStyle (bool)
+# DisableFormat (bool)
+# ExperimentalAutoDetectBinPacking (bool)
+# ForEachMacros (std::vector<std::string>)
+# Language (LanguageKind)
+# NamespaceIndentation (NamespaceIndentationKind)
+# ObjCBlockIndentWidth (unsigned)
+# SpaceAfterCStyleCast (bool)
+# SpaceBeforeAssignmentOperators (bool)
+# SpaceBeforeParens (SpaceBeforeParensOptions)
+# SpaceInEmptyParentheses (bool)
+# SpacesInAngles (bool)
+# SpacesInCStyleCastParentheses (bool)
+# SpacesInContainerLiterals (bool)
+# SpacesInParentheses (bool)
+# SpacesInSquareBrackets (bool)
+
+# Used to specify language specific features
+# Standard (LanguageStandard)
+
+# Not needed because auto line breaking is disabled
+# ContinuationIndentWidth (unsigned)
+
+#used to calculate auto-breaking, which is disabled
+# PenaltyBreakBeforeFirstCallParameter (unsigned)
+# PenaltyBreakComment (unsigned)
+# PenaltyBreakFirstLessLess (unsigned)
+# PenaltyBreakString (unsigned)
+# PenaltyExcessCharacter (unsigned)
+# PenaltyReturnTypeOnItsOwnLine (unsigned)
