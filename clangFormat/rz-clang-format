@@ -1,8 +1,5 @@
-# This file is not yet complete and does not properly format code to the Raizlabs style.
-
 # Not explicit
 ColumnLimit: 0
-SpaceBeforeParens: Always
 AllowShortBlocksOnASingleLine: false
 AllowShortFunctionsOnASingleLine: false
 AllowShortFunctionsOnASingleLine: None
@@ -44,7 +41,6 @@ AllowShortCaseLabelsOnASingleLine: false
 # https://github.com/Raizlabs/Raizlabs-Cocoa-Style#comments
 # Does not add a space after // comments
 AlignTrailingComments: true
-SpacesBeforeTrailingComments: 2
 
 # https://github.com/Raizlabs/Raizlabs-Cocoa-Style#method-signatures
 # Correct method signature construction seems to be inferred from
@@ -59,6 +55,15 @@ IndentWrappedFunctionNames: false
 # https://github.com/Raizlabs/Raizlabs-Cocoa-Style#protocols
 ObjCSpaceBeforeProtocolList: true
 
+# Spacing
+SpacesInParentheses: false
+SpacesInAngles:  false
+SpaceInEmptyParentheses: false
+SpacesInCStyleCastParentheses: false
+SpacesInContainerLiterals: true
+SpaceBeforeAssignmentOperators: true
+SpacesBeforeTrailingComments: 1
+
 # https://github.com/Raizlabs/Raizlabs-Cocoa-Style#blocks
 # Doesn't do anything useful with the typdef naming conventions,
 # also does not force short blocks to be separated on a line, and
@@ -72,48 +77,3 @@ ObjCSpaceBeforeProtocolList: true
 
 # https://github.com/Raizlabs/Raizlabs-Cocoa-Style#method-callssignatures
 # Breaks on long signatures, rather than a specific count
-
-# Unused clang format properties
-# AccessModifierOffset (int)
-# AlignAfterOpenBracket (bool)
-# AlignEscapedNewlinesLeft (bool)
-# AlignOperands (bool)
-# AllowAllParametersOfDeclarationOnNextLine (bool)
-# AlwaysBreakAfterDefinitionReturnType (bool)
-# AlwaysBreakBeforeMultilineStrings (bool)
-# AlwaysBreakTemplateDeclarations (bool)
-# BreakBeforeBinaryOperators (BinaryOperatorStyle)
-# BreakConstructorInitializersBeforeComma (bool)
-# CommentPragmas (std::string)
-# ConstructorInitializerAllOnOneLineOrOnePerLine (bool)
-# ConstructorInitializerIndentWidth (unsigned)
-# Cpp11BracedListStyle (bool)
-# DisableFormat (bool)
-# ExperimentalAutoDetectBinPacking (bool)
-# ForEachMacros (std::vector<std::string>)
-# Language (LanguageKind)
-# NamespaceIndentation (NamespaceIndentationKind)
-# ObjCBlockIndentWidth (unsigned)
-# SpaceAfterCStyleCast (bool)
-# SpaceBeforeAssignmentOperators (bool)
-# SpaceBeforeParens (SpaceBeforeParensOptions)
-# SpaceInEmptyParentheses (bool)
-# SpacesInAngles (bool)
-# SpacesInCStyleCastParentheses (bool)
-# SpacesInContainerLiterals (bool)
-# SpacesInParentheses (bool)
-# SpacesInSquareBrackets (bool)
-
-# Used to specify language specific features
-# Standard (LanguageStandard)
-
-# Not needed because auto line breaking is disabled
-# ContinuationIndentWidth (unsigned)
-
-#used to calculate auto-breaking, which is disabled
-# PenaltyBreakBeforeFirstCallParameter (unsigned)
-# PenaltyBreakComment (unsigned)
-# PenaltyBreakFirstLessLess (unsigned)
-# PenaltyBreakString (unsigned)
-# PenaltyExcessCharacter (unsigned)
-# PenaltyReturnTypeOnItsOwnLine (unsigned)
