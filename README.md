@@ -287,15 +287,14 @@ Instance variables are required in the following case:
 - Opening brace same line as predicate, separated by one space
 - Continuing keywords (`else if`/`else`) on new line below closing brace
 - All keywords and closing braces are flush left and code within braces are indented 4 spaces
-- One-space padding within parentheses
 
 **Preferred:**
 
 ```objc
-if ( expression ) {
+if (expression) {
     // if code
 }
-else if ( other expression ) {
+else if (other expression) {
     // else if code
 }
 else {
@@ -306,10 +305,10 @@ else {
 **Not:**
 
 ```objc
-if (expression)
+if ( expression )
 { // shouldn't be on next line
     // if code
-} else if (expression) // else should start on new line
+} else if ( expression ) // else should start on new line
 {
     // else if code
 }

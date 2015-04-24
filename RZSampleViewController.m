@@ -105,7 +105,7 @@ UITableViewDelegate>
 - (instancetype)initWithInteger:(NSInteger)integerParameter
 {
     self = [super init];
-    if ( self ) {
+    if (self) {
         // do setup stuff with integerParameter
     }
 
@@ -191,7 +191,7 @@ UITableViewDelegate>
 
 - (NSNumber *)lazyLoadedReadonlyNumber
 {
-    if ( !_lazyLoadedReadonlyNumber ) {
+    if (!_lazyLoadedReadonlyNumber) {
         // ...
     }
     return _lazyLoadedReadonlyNumber;
