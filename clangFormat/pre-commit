@@ -33,6 +33,9 @@ FILE_EXTS=".c .h .cpp .hpp .cc .hh .cxx .m"
  
 # if true, the code format patch is automatically applied and the commit is allowed. 
 AUTO_APPLY_PATCH=true
+# The return status when after applying changes. Setting this to 1 will fail the commit
+# after applying to minimize white space commits
+AUTO_APPLY_RETURN_STATUS=0
 
 ##################################################################
 # There should be no need to change anything below this line.
@@ -139,7 +142,7 @@ cat "$patch"
 if $AUTO_APPLY_PATCH; then
     printf "Applying patch and commiting..."
     git apply $patch
-    exit 0
+    exit $AUTO_APPLY_RETURN_STATUS 
 else
     printf "\nYou can apply these changes with:\n git apply $patch\n"
     printf "(may need to be called from the root directory of your repository)\n"
