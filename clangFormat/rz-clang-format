@@ -54,6 +54,7 @@ IndentWrappedFunctionNames: false
 
 # https://github.com/Raizlabs/Raizlabs-Cocoa-Style#protocols
 ObjCSpaceBeforeProtocolList: true
+ObjCXcodeBlockFormat: true
 
 # Spacing
 SpacesInParentheses: false
@@ -64,13 +65,7 @@ SpacesInContainerLiterals: true
 SpaceBeforeAssignmentOperators: true
 SpacesBeforeTrailingComments: 1
 
-# https://github.com/Raizlabs/Raizlabs-Cocoa-Style#blocks
-# Doesn't do anything useful with the typdef naming conventions,
-# also does not force short blocks to be separated on a line, and
-# as a major deficiency, always indents the block inline with the arguments
-# To avoid breaking formatting, leaving ObjCBlockIndentWidth undefined
-# Makes clang_format
-# ObjCBlockIndentWidth: 0
+ObjCBlockIndentWidth: 4
 
 # https://github.com/Raizlabs/Raizlabs-Cocoa-Style#rule-of-three
 # No settings to support breaking protocols onto one line per
