@@ -34,8 +34,9 @@ FILE_EXTS=".c .h .cpp .hpp .cc .hh .cxx .m"
 # if true, the code format patch is automatically applied and the commit is allowed. 
 AUTO_APPLY_PATCH=true
 # The return status when after applying changes. Setting this to 1 will fail the commit
-# after applying to minimize white space commits
-AUTO_APPLY_RETURN_STATUS=0
+# after applying to minimize white space commits.  It also means the committer will have
+# to review the changes caused by the formatter.
+AUTO_APPLY_RETURN_STATUS=1
 
 ##################################################################
 # There should be no need to change anything below this line.
