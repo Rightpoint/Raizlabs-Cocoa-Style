@@ -111,7 +111,7 @@ $DELETE_OLD_PATCHES && rm -f /tmp/$prefix*.patch
 git diff-index --cached --diff-filter=ACMR --name-only $against -- | while read file;
 do
     # ignore files under "Pods"
-    if  [[ "$file" =~ "*/Pods/*" ]] ; then
+    if  [[ "$file" =~ /*\/Pods\/*/ ]] ; then
         continue;
     fi        
 
