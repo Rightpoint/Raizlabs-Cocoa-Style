@@ -907,7 +907,7 @@ Singleton objects should use a thread-safe GCD pattern for creating their shared
 {
     static id sharedInstance = nil;
 
-    static dispatch_once_t oncetoken;
+    static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
         sharedInstance = [[[self class] alloc] init];
     });
