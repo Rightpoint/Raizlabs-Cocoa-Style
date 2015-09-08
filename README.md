@@ -907,7 +907,7 @@ Singleton objects should use a thread-safe GCD pattern for creating their shared
 {
     static id sharedInstance = nil;
 
-    static dispatch_once_t oncetoken;
+    static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
         sharedInstance = [[[self class] alloc] init];
     });
@@ -1060,7 +1060,7 @@ If a method has 3 or more parameters, separate the paramters with line breaks:
 **Not:**
 
 ```objc
-- (void)doSomethingWithArray:(NSArray *)array strin:(NSString *)string bool:(BOOL)bool
+- (void)doSomethingWithArray:(NSArray *)array string:(NSString *)string bool:(BOOL)bool
 {
     [super doSomethingWithArray:array string:string number:number bool:bool];
 }
