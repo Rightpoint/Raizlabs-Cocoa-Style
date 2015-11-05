@@ -337,7 +337,7 @@ Ternary conditional tests must be enclosed in parens:
 CGFloat result = (x > 2) ? someValue : otherValue;
 ```
 
-Non-conditionals do not need parens:
+Conditionals that are not expressions do not need parens:
 
 ```objc
 CGFloat result = self.isLoading ? someValue : otherValue;
