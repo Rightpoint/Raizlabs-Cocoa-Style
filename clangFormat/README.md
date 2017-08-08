@@ -8,4 +8,4 @@ The clang format pre-commit hook will execute clang-format on your code after yo
  - Copy the pre-commit hook into {project path}/.git/hooks/ directory of your project.
  - Rename rz-clang-format to {project path}/.clang-format 
  
-To format a bunch of files, `find swapp -iname "*.[mh]" | xargs -I {} clang-format -i {}`
+To format a bunch of files, `find ./path/to/code -iname "*.[mh]" | xargs -I {} clang-format -i {}`
