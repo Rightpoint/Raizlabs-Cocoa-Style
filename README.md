@@ -7,6 +7,9 @@ This guide outlines the coding conventions and best practices for the Objective-
 **Table of Contents**  *generated with [DocToc](http://doctoc.herokuapp.com/)*
 
 - [Dot Syntax](#dot-syntax)
+  - [Custom getters/setters](#custom-getterssetters)
+  - [Idempotent](#idempotent)
+  - [Mixed Usage](#mixed-usage)
 - [Whitespace](#whitespace)
   - [Newlines](#newlines)
   - [Indentation](#indentation)
@@ -70,6 +73,7 @@ int bar = self.foo;
 int bar = [self foo];
 _bar = 4;
 ```
+### Custom getters/setters
 
 For clarity, you may use bracket notation for overridden setters/getters:
 
@@ -94,6 +98,7 @@ For clarity, you may use bracket notation for overridden setters/getters:
     int test = [self foo];
 }
 ```
+### Idempotent
 
 **Never** use dot notation on a non-[idempotent](http://en.wikipedia.org/wiki/Idempotent) property or method. For example, `count` isn't actually a property on `NSArray`; the compiler just infers because there's a method called count. However, it *is* an idempotent method, so it is safe to use dot-notation:
 
@@ -128,6 +133,20 @@ Avoid non-idempotent setters
 ```
 
 This is not to say that you shouln't override setters; you just need to be careful that the side effects are obvious, and with low potential danger.
+
+### Mixed Usage
+
+Do not mix bracket notation and dot notation on the same line.
+
+**Bad:**
+```objc
+[UIApplication sharedApplication].statusBarOrientation
+```
+
+**Preferred:**
+```objc
+[[UIApplication sharedApplication] statusBarOrientation]
+```
 
 ## Whitespace
 
