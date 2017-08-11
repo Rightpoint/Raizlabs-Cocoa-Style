@@ -10,6 +10,8 @@
 @import AddressBook;
 @import QuartzCore;
 
+#import "RZSampleViewController.h"
+
 // View controllers
 #import "FooViewController.h"
 #import "ViewControllerA.h"
